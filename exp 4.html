@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IMAGE - Single Button Color</title>
+    <style>
+        body {
+            background-color: lightblue;
+            font-family: Verdana;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 12pt;
+            font-weight: bold;
+        }
+
+        /* Thumbnail images */
+        img.thumbnail {
+            border: 10px solid yellow;
+            cursor: pointer;
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* Enlarged/highlighted image */
+        img.active {
+            width: 400px;
+            height: 400px;
+            border-color: red;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Buttons */
+        input[type="button"] {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: lightgray;
+            border: none;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Button hover effect */
+        input[type="button"]:hover {
+            background-color: darkgray;
+        }
+
+        /* Active button style (only for one button) */
+        #button1.active-button {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Experiment 4</h1>
+    <h1>CSS in HTML Demonstration</h1>
+
+    <!-- Images -->
+    <img id="img1" class="thumbnail" src="rcb.png" alt="RCB">
+    <img id="img2" class="thumbnail" src="cu.png" alt="CUP">
+
+    <br><br>
+
+    <!-- Buttons -->
+    <input type="button" id="button1" value="Click Me 1" onclick="reactImage('img1')">
+    <input type="button" id="button2" value="Click Me 2" onclick="reactImage('img2')">
+
+    <script>
+        function reactImage(imageId) {
+            // Remove 'active' from all images
+            document.querySelectorAll('img.thumbnail').forEach(img => img.classList.remove('active'));
+
+            // Add 'active' to the selected image
+            document.getElementById(imageId).classList.add('active');
+
+            // Only button1 changes color
+            let button1 = document.getElementById('button1');
+
+            if (imageId === 'img1') {
+                button1.classList.add('active-button');
+            } else {
+                button1.classList.remove('active-button');
+            }
+        }
+    </script>
+
+</body>
+</html>
